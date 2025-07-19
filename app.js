@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+
 
 // ✏️ Replace this with your real MongoDB connection string
 const mongoURI = 'mongodb+srv://agboblielliot:MkVqYbowNVkYB1Tr@cluster0.ggqeedv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
@@ -70,6 +70,10 @@ app.post('/register', async (req, res) => {
   res.redirect('/dashboard');
 });
 
+// ✅ Make sure this is the ONLY place you define PORT
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`🚀 Momentum Remedial School app running at http://localhost:${PORT}v`);
+  console.log(`🚀 Momentum Remedial School app running at http://localhost:${PORT}`);
 });
+
